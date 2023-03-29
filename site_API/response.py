@@ -1,7 +1,8 @@
+from pprint import pprint
+
 import requests
-from loader import api
-from states.contact_information import UserInfoState
 from typing import Dict
+from loader import api
 
 
 def api_request(method_endswith: str, params: Dict, method_type: str):
@@ -12,11 +13,6 @@ def api_request(method_endswith: str, params: Dict, method_type: str):
             url=url,
             params=params
         )
-    # else:
-    #     return post_request(
-    #         url=url,
-    #         params=params
-    #     )
 
 
 def get_request(url: str, params: Dict):
@@ -31,3 +27,8 @@ def get_request(url: str, params: Dict):
     except Exception as exc:
         print(exc)
         print('Проверьте название города')
+
+
+# pprint(api_request(method_endswith='forecast',
+#                        params={'q': 'Kaluga', 'cnt': 41, 'appid': api, 'units': 'metric', 'lang': 'ru'},
+#                        method_type='GET'))
