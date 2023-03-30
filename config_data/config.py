@@ -11,4 +11,6 @@ API_KEY = os.getenv('API_KEY')
 DEFAULT_COMMANDS = (
     ('start', "Запустить бота"),
     ('help', "Вывести справку"),
+    ('setloc', "Установить город"),
+    ('current_weather', "Текущая погода"),
 )
