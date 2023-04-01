@@ -6,9 +6,16 @@ from site_API import display
 
 @bot.message_handler(commands=['one_day'])
 def current_weather(message: Message) -> None:
-    bot.send_message(message.from_user.id,
-                     display.display(method_endswith='forecast',
-                                     params={'q': 'Kaluga', 'appid': api, 'cnt': 9, 'units': 'metric', 'lang': 'ru'},
-                                     method_type='GET'
-                                     ))
+    try:
+        with bot.retrieve_data(message.from_user.id, message.chat.id) as data:
+            location = data['location']
+
+        bot.send_message(message.from_user.id,
+                         display.display(method_endswith='forecast',
+                                         params={'q': location, 'appid': api, 'cnt': 9, 'units': 'metric', 'lang': 'ru'},
+                                         method_type='GET'
+                                         ))
+
+    except Exception as exc:
+        bot.send_message(message.from_user.id, 'Выберете город и попробуйте снова')
 
