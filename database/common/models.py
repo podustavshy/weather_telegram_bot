@@ -1,7 +1,7 @@
 from datetime import datetime
 from peewee import *
 
-db = SqliteDatabase('db_for_tgbot.db')
+db = SqliteDatabase('history.db')
 
 
 class ModelBase(Model):
@@ -12,5 +12,7 @@ class ModelBase(Model):
 
 
 class History(ModelBase):
-    location = TextField()
+    name = CharField()
+    telegram_id = IntegerField()
     message = TextField()
+    response = TextField()
