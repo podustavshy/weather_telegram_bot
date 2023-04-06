@@ -42,4 +42,4 @@ def graph_display(method_endswith: str, params: Dict, method_type: str):
     fig.set_figheight(12)
     fig.set_figwidth(12)
 
-    plt.savefig('weather_for_five_days_' + data['city']['name'])
+    plt.savefig('weather_for_five_days_' + params['q'])
