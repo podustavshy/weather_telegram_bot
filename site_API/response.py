@@ -1,8 +1,6 @@
-from pprint import pprint
-
 import requests
 from typing import Dict
-from loader import api
+
 
 
 def api_request(method_endswith: str, params: Dict, method_type: str):
@@ -27,8 +25,3 @@ def get_request(url: str, params: Dict):
     except Exception as exc:
         print(exc)
         print('Проверьте название города')
-
-
-# pprint(api_request(method_endswith='forecast',
-#                        params={'q': 'Kaluga', 'cnt': 41, 'appid': api, 'units': 'metric', 'lang': 'ru'},
-#                        method_type='GET'))

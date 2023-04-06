@@ -1,6 +1,5 @@
 from site_API.response import api_request
 from typing import Dict
-from loader import api
 from datetime import datetime
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
@@ -43,9 +42,4 @@ def graph_display(method_endswith: str, params: Dict, method_type: str):
     fig.set_figheight(12)
     fig.set_figwidth(12)
 
-    plt.savefig('weather_for_five_days')
-
-
-# graph_display(method_endswith='forecast',
-#                        params={'q': 'Калуга', 'cnt': 41, 'appid': api, 'units': 'metric', 'lang': 'ru'},
-#                        method_type='GET')
+    plt.savefig('weather_for_five_days_' + data['city']['name'])

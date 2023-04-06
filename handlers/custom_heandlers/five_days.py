@@ -1,4 +1,4 @@
-import os
+from pathlib import Path
 from loader import bot
 from loader import api
 from telebot.types import Message
@@ -16,14 +16,11 @@ def five_days(message: Message) -> None:
                           method_type='GET'
                          )
 
-        with open(
-                r'C:\Users\Подуставшый\PycharmProjects\pythonProject\python_basic_diploma\weather_for_five_days.png',
-                'rb'
-        ) as file:
-
+        with open(Path().cwd()/f'weather_for_five_days_{location}.png', 'rb') as file:
             bot.send_photo(message.from_user.id, file)
 
-        # os.remove(r'C:\Users\Подуставшый\PycharmProjects\pythonProject\python_basic_diploma\weather_for_five_days.png')
+        (Path().cwd()/f'weather_for_five_days_{location}.png').unlink()
 
     except Exception as exc:
+        print(exc)
         bot.send_message(message.from_user.id, 'Выберете город и попробуйте снова')

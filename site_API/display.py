@@ -1,6 +1,5 @@
 from site_API.response import api_request
 from typing import Dict
-from loader import api
 from datetime import datetime
 
 
@@ -31,6 +30,3 @@ def display(method_endswith: str, params: Dict, method_type: str):
                 f"Ветер: {interval['wind']['speed']} м/с\n\n"
 
     return text
-# display(method_endswith='weather',
-#                        params={'q': 'Kaluga', 'cnt': 41, 'appid': api, 'units': 'metric', 'lang': 'ru'},
-#                        method_type='GET')

@@ -19,7 +19,8 @@ def current_weather(message: Message) -> None:
         bot.send_message(message.from_user.id, response)
 
     except Exception as exc:
-        bot.send_message(message.from_user.id, 'Выберете город и попробуйте снова')
+        response = 'Выберете город и попробуйте снова'
+        bot.send_message(message.from_user.id, response)
 
     with db:
         History.create(name=message.from_user.full_name, telegram_id=message.from_user.id,
