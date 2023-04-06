@@ -4,10 +4,9 @@ from telebot.types import Message
 from database.common.models import db, History
 
 
-@bot.message_handler(commands=['setloc'])
-def setloc(message: Message) -> None:
+@bot.message_handler(commands=['changeloc'])
+def changeloc(message: Message) -> None:
     bot.set_state(message.from_user.id, UserInfoState.location, message.chat.id)
-
     response = 'Введите название города'
     bot.send_message(message.from_user.id, response)
 

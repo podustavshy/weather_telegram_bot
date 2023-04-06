@@ -1,6 +1,5 @@
 from site_API.response import api_request
 from typing import Dict
-from loader import api
 from datetime import datetime
 
 
@@ -22,15 +21,12 @@ def display(method_endswith: str, params: Dict, method_type: str):
             f"Закат солнца: {sunset_timestamp}\n"\
             f"Продолжительность дня: {length_of_the_day}\n"
     else:
-        text = f"Погода в городе: {data['city']['name']}\n"
+        text = f"Погода в городе: {data['city']['name']}\n\n"
         for interval in data['list']:
             text += f"Дата и время: {interval['dt_txt']}\n"\
                 f"Температура: {interval['main']['temp']}C°, {interval['weather'][0]['description']}\n"\
                 f"Влажность: {interval['main']['humidity']}%\n"\
                 f"Давление: {interval['main']['pressure']} мм.рт.ст\n"\
-                f"Ветер: {interval['wind']['speed']} м/с\n"
+                f"Ветер: {interval['wind']['speed']} м/с\n\n"
 
     return text
-# display(method_endswith='weather',
-#                        params={'q': 'Kaluga', 'cnt': 41, 'appid': api, 'units': 'metric', 'lang': 'ru'},
-#                        method_type='GET')
